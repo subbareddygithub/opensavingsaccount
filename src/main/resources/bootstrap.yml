@@ -1,0 +1,94 @@
+management: 
+  endpoint: 
+    metrics: 
+      enabled: true
+    prometheus: 
+      enabled: true
+  endpoints: 
+    web: 
+      exposure: 
+        include: "*"
+  metrics: 
+    export: 
+      prometheus: 
+        enabled: true
+spring: 
+  application: 
+    name: opensavingsaccount
+  cloud: 
+    config: 
+      failFast: false
+      retry: 
+        maxAttempts: 20
+      uri: ${CONFIG_SERVER_URI}
+  profiles: 
+    active: ${PROFILE:dev}
+  sleuth: 
+    sampler: 
+      percentage: 1
+  api: 
+    correspondence: 
+      context-path: /Correspondence/Initiate
+      hosturl: /test
+      jolt-filename: Correspondence710729-jolt.json
+    customeroffer: 
+      context-path: /CustomerOffer/Initiate
+      hosturl: /test
+      jolt-filename: CustomerOffer442065-jolt.json
+    customerproductandserviceeligibility: 
+      context-path: /CustomerProductAndServiceEligibility/Evaluate
+      hosturl: /test
+      jolt-filename: CustomerProductAndServiceEligibility371196-jolt.json
+    customerproductsandservices: 
+      context-path: /CustomerProductsandServices/{customerproductsandservicesId}/Control
+      hosturl: /test
+      jolt-filename: CustomerProductsAndServices164855-jolt.json
+    financialaccounting: 
+      context-path: /FinancialAccounting/Initiate
+      hosturl: /test
+      jolt-filename: FinancialAccounting849383-jolt.json
+    guidelinecompliance: 
+      context-path: /GuidelineCompliance/Evaluate
+      hosturl: /test
+      jolt-filename: GuidelineCompliance261429-jolt.json
+    issueddeviceadministration: 
+      context-path: /IssuedDeviceAdministration/Initiate
+      hosturl: /test
+      jolt-filename: IssuedDeviceAdministration990341-jolt.json
+    partylifecyclemanagement: 
+      context-path: /PartyLifecycleManagement/Initiate
+      hosturl: /test
+      jolt-filename: PartyLifecycleManagement470677-jolt.json
+    partyreferencedatadirectory: 
+      context-path: /PartyReferenceDataDirectory/Register
+      hosturl: /test
+      jolt-filename: PartyReferenceDataDirectory869825-jolt.json
+    paymentorder: 
+      context-path: /PaymentOrder/Initiate
+      hosturl: /test
+      jolt-filename: PaymentOrder562325-jolt.json
+    positionkeeping: 
+      context-path: /PositionKeeping/Initiate
+      hosturl: /test
+      jolt-filename: PositionKeeping817511-jolt.json
+    productdirectory: 
+      context-path: /ProductDirectory/Register
+      hosturl: /test
+      jolt-filename: ProductDirectory605415-jolt.json
+    regulatorycompliance: 
+      context-path: /RegulatoryCompliance/Evaluate
+      hosturl: /test
+      jolt-filename: RegulatoryCompliance855757-jolt.json
+    salesproductagreement: 
+      context-path: /SalesProductAgreement/Evaluate
+      hosturl: /test
+      jolt-filename: SalesProductAgreement384496-jolt.json
+    savingsaccount: 
+      context-path: /SavingsAccount/Initiate
+      hosturl: /test
+      jolt-filename: SavingsAccount458731-jolt.json
+  datasource: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${mysql_pwd}
+    url: jdbc:mysql://${mysql_url}:3306/camunda
+    username: ${mysql_user}
